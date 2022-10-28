@@ -1,4 +1,4 @@
-# vue-crash
+# Vue TaskList 
 
 ## Project setup
 ```
