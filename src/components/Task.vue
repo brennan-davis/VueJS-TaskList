@@ -7,18 +7,24 @@
 			{{ task.text }}
 			<i @click="$emit('delete-task', task.id)" class="fas fa-times"></i>
 		</h3>
-		<p>{{ task.day }}</p>
+		<p>{{ formatDate(task.day) }}</p>
 	</div>
 </template>
 
 <script>
+const dayjs = require("dayjs");
+
 export default {
 	// eslint-disable-next-line vue/multi-word-component-names
 	name: "Task",
 	props: {
 		task: Object,
 	},
-	methods: {},
+	methods: {
+		formatDate(date) {
+			return dayjs(date).format("MMMM DD, YYYY @ hh:MM A");
+		},
+	},
 };
 </script>
 

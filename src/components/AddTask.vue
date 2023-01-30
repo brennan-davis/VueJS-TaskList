@@ -6,12 +6,7 @@
 		</div>
 		<div class="form-control">
 			<label>Day & Time</label>
-			<input
-				type="text"
-				v-model="day"
-				name="day"
-				placeholder="Add Day & Time"
-			/>
+			<input type="datetime-local" name="day" v-model="day" />
 		</div>
 		<div class="form-control form-control-check">
 			<label>Set Reminder</label>
@@ -28,7 +23,7 @@ export default {
 	data() {
 		return {
 			text: "",
-			day: "",
+			day: new Date(),
 			reminder: false,
 		};
 	},
@@ -42,13 +37,13 @@ export default {
 			}
 
 			const newTask = {
-				id: Math.floor(Math.random() * 1000000),
 				text: this.text,
 				day: this.day,
 				reminder: this.reminder,
 			};
 
 			this.$emit("add-task", newTask);
+			this.$emit("toggle-add-task");
 
 			this.text = "";
 			this.day = "";
